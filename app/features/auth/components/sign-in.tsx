@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Link, useRouter } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { authClient } from "@/features/auth/lib/auth-client";
 
 const signInFormSchema = z.object({
   email: z.string().email().min(1, { message: "Email is Required" }),
@@ -16,8 +15,7 @@ const signInFormSchema = z.object({
 });
 
 export const SignIn = () => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const [loading] = useState(false);
   const form = useForm<z.infer<typeof signInFormSchema>>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -28,22 +26,7 @@ export const SignIn = () => {
 
   const onSubmit = async ({ email, password }: z.infer<typeof signInFormSchema>) => {
     if (loading) return;
-
-    await authClient.signIn.email(
-      { email, password },
-      {
-        onRequest: () => {
-          setLoading(true);
-        },
-        onSuccess: () => {
-          router.navigate({ to: "/dashboard" });
-        },
-        onError: (ctx) => {
-          setLoading(false);
-          alert(ctx.error.message);
-        },
-      },
-    );
+    console.log(email, password);
   };
 
   return (

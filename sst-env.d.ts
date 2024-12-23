@@ -6,11 +6,7 @@ import "sst"
 export {}
 declare module "sst" {
   export interface Resource {
-    "BetterAuthSecret": {
-      "type": "sst.sst.Secret"
-      "value": string
-    }
-    "TSSDatabase": {
+    "MyDb": {
       "database": string
       "host": string
       "password": string
@@ -18,13 +14,13 @@ declare module "sst" {
       "type": "sst.aws.Postgres"
       "username": string
     }
-    "TSSWebApp": {
-      "type": "sst.aws.TanstackStart"
-      "url": string
-    }
-    "TTSVpc": {
+    "MyVpc": {
       "bastion": string
       "type": "sst.aws.Vpc"
+    }
+    "sstart-app": {
+      "type": "sst.aws.TanstackStart"
+      "url": string
     }
   }
 }

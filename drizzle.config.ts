@@ -6,10 +6,13 @@ export default defineConfig({
   schema: ["./app/**/*.sql.ts"],
   out: "./app/database/migrations/",
   dbCredentials: {
-    host: Resource.sstartDatabase.host,
-    port: Resource.sstartDatabase.port,
-    user: Resource.sstartDatabase.username,
-    password: Resource.sstartDatabase.password,
-    database: Resource.sstartDatabase.database,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+    host: Resource.MyDb.host,
+    port: Resource.MyDb.port,
+    user: Resource.MyDb.username,
+    password: Resource.MyDb.password,
+    database: Resource.MyDb.database,
   },
 });
