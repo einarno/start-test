@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -28,13 +28,13 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          version: 22,
           cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
 
-  lint: 
+  lint:
     runs-on: ubuntu-latest
     concurrency:
       group: PR-Checks-lint-${{ github.event.pull_request.number || github.ref }}
@@ -43,7 +43,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -52,7 +52,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          version: 22,
           cache: "pnpm"
 
       - name: Install dependencies
@@ -61,7 +61,7 @@ jobs:
       - name: Run lint
         run: pnpm lint
 
-  build: 
+  build:
     runs-on: ubuntu-latest
     concurrency:
       group: PR-Checks--build-${{ github.event.pull_request.number || github.ref }}
@@ -70,7 +70,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -79,7 +79,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          version: 22,
           cache: "pnpm"
 
       - name: Install dependencies
@@ -88,7 +88,7 @@ jobs:
       - name: Run build
         run: pnpm build
 
-  deploy: 
+  deploy:
     runs-on: ubuntu-latest
     concurrency:
       group: PR-Stage-Deploy-${{ github.event.pull_request.number || github.ref }}
@@ -103,7 +103,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::340752840587:role/GitHub
           aws-region: us-east-1
-      
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -112,7 +112,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          version: 22,
           cache: "pnpm"
 
       - name: Install dependencies
@@ -166,4 +166,3 @@ jobs:
                 body: commentBody,
               });
             }
-    

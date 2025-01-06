@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev:app": "pnpm --filter web dev",
+    "build:app": "pnpm --filter web build",
     "dev": "sst dev",
     "db:studio": "pnpm --filter database db:studio",
     "db:generate": "pnpm --filter database db:generate",

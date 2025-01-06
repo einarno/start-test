@@ -6,6 +6,7 @@
   "scripts": {
     "auth": "aws sso login --sso-session=mesa",
     "build": "vinxi build",
+    "build:vercel": "vinxi build --preset vercel",
     "db:generate": "sst shell drizzle-kit generate",
     "db:migrate": "sst shell drizzle-kit migrate",
     "db:push": "sst shell drizzle-kit push",
