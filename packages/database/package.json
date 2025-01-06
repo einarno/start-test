@@ -1,0 +1,27 @@
+{
+  "name": "database",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "db:generate": "sst shell drizzle-kit generate",
+    "db:migrate": "sst shell drizzle-kit migrate",
+    "db:push": "sst shell drizzle-kit push",
+    "db:studio": "drizzle-kit studio --verbose"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": "22"
+  },
+  "dependencies": {
+    "drizzle-kit": "^0.28.1",
+    "drizzle-orm": "^0.36.3",
+    "drizzle-zod": "^0.5.1",
+    "pg": "^8.13.1",
+    "sst": "3.3.47"
+  },
+  "devDependencies": {
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.6.3"
+  }
+}

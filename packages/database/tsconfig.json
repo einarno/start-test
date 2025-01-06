@@ -8,6 +8,9 @@
     "target": "ESNext",
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["packages/web/*"]
+    }
   }
 }
