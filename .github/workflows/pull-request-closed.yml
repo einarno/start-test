@@ -20,12 +20,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::340752840587:role/GitHub
-          aws-region: us-east-1
-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -39,6 +33,3 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Remove PR stage
-        run: pnpm sst remove --stage pr-${{ github.event.pull_request.number }}
