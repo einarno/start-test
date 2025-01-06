@@ -16,15 +16,9 @@ permissions:
 jobs:
   remove-pr-stage:
     runs-on: ubuntu-latest
-    steps:          
+    steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::340752840587:role/GitHub
-          aws-region: us-east-1
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -34,11 +28,8 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v4
         with:
-          node-version-file: ".nvmrc"
+          version: 22,
           cache: "pnpm"
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Remove PR stage
-        run: pnpm sst remove --stage pr-${{ github.event.pull_request.number }}

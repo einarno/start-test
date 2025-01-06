@@ -1,5 +1,5 @@
 {
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "tailwind.config.ts"],
   "compilerOptions": {
     "strict": true,
     "jsx": "react-jsx",
@@ -8,6 +8,9 @@
     "target": "ESNext",
     "skipLibCheck": true,
     "strictNullChecks": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["app/*"]
+    }
   }
 }
